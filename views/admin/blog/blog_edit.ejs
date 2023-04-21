@@ -1,0 +1,49 @@
+<%- include('../admin-sidebar.ejs') %>
+
+
+<%- include('../admin-header.ejs') %>
+
+
+
+
+<div class="content mt-3">
+  <div class="animated fadeIn">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header d-flex justify-content-between">
+                      <div>
+                        <strong class="card-title">Edit Blog</strong>
+                      </div>
+                  </div>
+                  <div class="card-body">
+                    <form action="/blogupdate/<%= item._id %>" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                          <label for="">Upload Images</label>
+                          <input type="file" name="image" class="form-control">
+                          <img src="<%= item.image.url %>"  style="width: 200px; margin-top: 15px;" class="img-fluid" alt="">
+                        </div>
+                      <div class="mb-3">
+                        <label for="">Title</label>
+                        <input type="text" name="title" value="<%= item.title %>" class="form-control">
+                      </div>
+                      <div class="mb-3">
+                        <label for="">Description</label>
+                        <textarea name="description" class="form-control" id="" cols="30" rows="7"><%= item.description %></textarea>
+                      </div>
+                      <div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </div>
+                    </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div><!-- .animated -->
+
+
+</div><!-- .content -->
+</div><!-- /#right-panel -->
+
+
+<%- include('../admin-footer') %>

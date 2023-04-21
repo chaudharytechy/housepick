@@ -1,0 +1,27 @@
+{
+  "name": "estateagency",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cloudinary": "^1.35.0",
+    "connect-flash": "^0.1.1",
+    "cors": "^2.8.5",
+    "country-state-city": "^3.1.2",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "express-session": "^1.17.3",
+    "mongoose": "^7.0.0",
+    "nodemailer": "^6.9.1",
+    "otp-generator": "^4.0.1"
+  }
+}

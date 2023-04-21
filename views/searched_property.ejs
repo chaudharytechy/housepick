@@ -1,0 +1,178 @@
+<%- include('header.ejs') %>
+<section class="intro-single">
+    <div class="container">
+        <% if(data.length >0){ %>
+            <div class="row">
+                <h5 class="mb-4">Showing results for "<%= location %>"</h5>
+                <div class="col-md-4">
+                    <div class="row gy-3">
+                        <div class="col-4 col-md-12">
+                            <select name="" id="" class="form-select rounded-0">
+                                <option value="">All Type</option>
+                                <option value="">Apartment</option>
+                                <option value="">House</option>
+                                <option value="">Duplex</option>
+                            </select>
+                        </div>
+                        <div class="col-4 col-md-12">
+                            <select name="" onchange="cool(this.value)" id="bhk" class="form-select rounded-0">
+                                <option selected disabled>BHK Type</option>
+                                <option value="0">1 RK</option>
+                                <option value="1">1 BHK</option>
+                                <option value="2">2 BHK</option>
+                                <option value="3">3 BHK</option>
+                                <option value="4">4 BHK</option>
+                                <option value="5">5 BHK+</option>
+                            </select>
+                        </div>
+                        <div class="col-4 col-md-12">
+                            <select name="" id="" class="form-select rounded-0">
+                                <option value="">Bathroom</option>
+                                <option value="">Apartment</option>
+                                <option value="">House</option>
+                                <option value="">Duplex</option>
+                            </select>
+                        </div>
+                        <div class="col-4 col-md-12">
+                            <select name="" id="" class="form-select rounded-0">
+                                <option value="">Price</option>
+                                <option value="">Less than ₹25L</option>
+                                <option value="">₹25L - ₹50L</option>
+                                <option value="">₹50L - ₹1Cr</option>
+                                <option value="">₹1Cr - ₹1.5Cr</option>
+                                <option value="">₹1.5Cr - ₹2Cr</option>
+                                <option value="">₹2Cr - ₹2.5Cr</option>
+                                <option value="">Above ₹3Cr+</option>
+                            </select>
+                        </div>
+                        <div class="col-4 col-md-12">
+                            <select name="" id="" class="form-select rounded-0">
+                                <option value="">Area (sq.ft.)</option>
+                                <option value="">Less than 500 sq.ft.</option>
+                                <option value="">500 sq.ft. - 1000 sq.ft.</option>
+                                <option value="">1000 sq.ft. - 2000 sq.ft.</option>
+                                <option value="">2000 sq.ft. - 3000 sq.ft.</option>
+                                <option value="">3000 sq.ft. - 4000 sq.ft.</option>
+                                <option value="">4000 sq.ft. - 5000 sq.ft.</option>
+                                <option value="">Above 5000 sq.ft.</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="" class="mb-1">Amenities</label>
+                                <div class="row gy-1">
+                                    <div class="col-4 col-md-6 col-xl-4">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="balcony" name="amenities">
+                            <label class="form-check-label" for="inlineCheckbox1">Balcony</label>
+                                    </div>
+                                    <div class="col-4 col-md-6 col-xl-4">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="balcony" name="amenities">
+                            <label class="form-check-label" for="inlineCheckbox1">Cable Tv</label>
+                                    </div>
+                                    <div class="col-4 col-md-6 col-xl-4">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="balcony" name="amenities">
+                            <label class="form-check-label" for="inlineCheckbox1">Deck</label>
+                                    </div>
+                                    <div class="col-4 col-md-6 col-xl-4">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="balcony" name="amenities">
+                            <label class="form-check-label" for="inlineCheckbox1">Parking</label>
+                                    </div>
+                                    <div class="col-4 col-md-6 col-xl-4">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="balcony" name="amenities">
+                            <label class="form-check-label" for="inlineCheckbox1">Internet</label>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="col-4 col-md-12">filter option</div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <% data.forEach((item)=>{ %>
+                        <a href="/property-detail/<%= item._id %>" onmouseover="this.style.color='black';">
+                            <div class="row shadow mb-4">
+                                <div class="col-md-12 col-lg-3 p-0">
+                                    <div>
+                                        <img src="<%= item.front_image.url %>" class="" style="width: 100%; height: 243px;" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-9 p-4">
+                                    <div class="">
+                                    <h5>Price: <%= item.price %></h5>
+                                    <p class="mb-0 text-black"><%= item.property_name %></p>
+                                    <p style="font-size: 13px;"><%= item.address %>, <%= item.city %></p>
+                                    <p><%= item.description.slice(0,120) %>... <span class="text-primary">read more</span></p>
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <p><%= item.bedroom %> BHK | <%= item.bathroom %> Baths | <%= item.area %> sq.ft.</p>
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-success">view detail</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    <% }) %>
+                </div>
+            </div>
+        <% }else{ %>
+            <div class="d-flex">
+                <div>
+                    <h5>No results for "<%= location %>"</h5>
+                    <p>Try checking your spelling or use more general terms</p>
+                </div>
+            </div>
+        <% } %>
+        <script>
+            // const bhkFilter = document.getElementById('bhk')
+            // console.log(bhkFilter);
+            // bhkFilter.onchange = function(){
+            //   console.log(bhkFilter.value);
+            // }
+        
+            // console.log(bhkFilter);
+            async function cool(data){
+              console.log(data);
+              const obj = {
+                bhk: 3,
+                city: "pata nahi",
+                bathroom: 2
+              }
+
+            //   let newObj = JSON.stringify(obj)
+
+            //   let xhttp = new XMLHttpRequest()
+            //   xhttp.open('POST','http://localhost:5300/filterProperty',true)
+            //   xhttp.setRequestHeader('content-type','application/json')
+            //   xhttp.send(newObj)
+            //   xhttp.onload = function(){
+            //     if( this.status == 201){
+            //     console.log("created");
+            //   }
+            //   }
+              
+            //   let xhttp = new XMLHttpRequest()
+            // xhttp.open('GET','http://localhost:5300/filterProperty/<%= location %>/'+data, true)
+            // xhttp.send()
+            // xhttp.onreadystatechange = function(){
+            //   if(this.readyState == 4 && this.status == 200){
+            //     console.log(xhttp.responseText);
+            //   }
+            // }
+
+        //    fetch('http://localhost:5300/filterProperty',{
+        //         method:'post',
+        //         body: JSON.stringify(obj),
+        //         headers:{'Accept': 'application/json','Content-Type':'application/json'}
+        //     })
+        //     .then(Response=>Response.json())
+        //     .then(json => console.log(json))
+
+            }
+            
+          </script>
+    </div>
+</section>
+    
+
+<%- include('footer.ejs') %>

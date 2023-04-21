@@ -1,0 +1,183 @@
+<%- include('../admin-sidebar.ejs') %>
+
+
+<%- include('../admin-header.ejs') %>
+
+
+
+
+<div class="content mt-3">
+  <div class="animated fadeIn">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header d-flex justify-content-between">
+                      <div>
+                        <strong class="card-title">Edit Slider</strong>
+                      </div>
+                  </div>
+                  <div class="card-body">
+                    <form action="/propertyupdate/<%= data._id %>" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                          <label for="">Property Front image</label>
+                          <input type="file" name="front_image" class="form-control">
+                          <img src="<%= data.front_image.url %>"  style="width: 150px; margin-top: 10px;" alt="">
+                        </div>
+                        <div class="mb-3">
+                          <label for="">Property all images</label>
+                          <input type="file" name="all_image" accept="image/*" class="form-control" multiple>
+                          <div class="d-flex flex-wrap">
+                            <% for(let element of data.all_image){ %>
+                              <div class="d-flex">
+                                <img src="<%= element.url %>"  style="width: 150px; margin-top: 10px;" alt="">
+                              <div class="mt-2 me-3">
+                                <a href="/singleimagedelete/<%= data._id %>/<%= element.public_id %>" class="text-danger "><i class="fa fa-trash border border-1 fs-4 p-1"></i></a>
+                              </div>
+                              </div>
+                            <% } %>
+                          </div>
+                          
+                          
+                        </div>
+                      <div class="mb-3">
+                        <label for="">Property Name</label>
+                        <input type="text" name="property_name" value="<%= data.property_name %>" class="form-control">
+                      </div>
+                      <div class="mb-3">
+                        <label for="">State</label>
+                        <select name="state" id="" class="form-select">
+                            <option selected disabled>Select state</option>
+                            <option value="madhya pradesh" <%= data.state==='madhya pradesh' ? 'selected' : '' %> >Madhya Pradesh</option>
+                            <option value="new delhi" <%= data.state==='new delhi' ? 'selected' : '' %> >New delhi</option>
+                            <option value="mumbai" <%= data.state==='mumbai' ? 'selected' : '' %>>Mumbai</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label for="">City</label>
+                        <select name="city" id="" class="form-select">
+                            <option selected disabled>Select city</option>
+                            <option value="gwalior" <%= data.city==='gwalior' ? 'selected' : '' %>>Gwalior</option>
+                            <option value="bhopal" <%= data.city==='bhopal' ? 'selected' : '' %>>Bhopal</option>
+                            <option value="indore" <%= data.city==='indore' ? 'selected' : '' %>>Indore</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label for="">Address</label>
+                        <input type="text" name="address" value="<%= data.address %>" class="form-control">
+                      </div>
+                      <div class="mb-3">
+                        <label for="">Pincode</label>
+                        <input type="number" name="pincode" value="<%= data.pincode %>" class="form-control">
+                      </div>
+                      <div class="mb-3">
+                        <label for="">Description</label>
+                        <textarea name="description" class="form-control" id="" cols="30" rows="7"><%= data.description %></textarea>
+                      </div>
+                      <div class="mb-3">
+                        <label for="">Price</label>
+                        <input type="number" name="price" value="<%= data.price %>" class="form-control">
+                      </div>
+                      <div class="mb-3">
+                        <label for="">Type</label>
+                        <select name="type" id="" class="form-select">
+                            <option selected disabled>Select type</option>
+                            <option value="house" <%= data.type==='house' ? 'selected' : '' %>>House</option>
+                            <option value="apartment" <%= data.type==='apartment' ? 'selected' : '' %>>Apartment</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label for="">Area</label>
+                        <input type="number" name="area" value="<%= data.area %>" class="form-control">
+                      </div>
+                      <div class="mb-3">
+                        <label for="">Numbers of bedroom</label>
+                        <select name="bedroom" id="" class="form-select">
+                            <option selected disabled>Select</option>
+                            <option value="1" <%= data.bedroom==='1' ? 'selected' : '' %>>1</option>
+                            <option value="2" <%= data.bedroom==='2' ? 'selected' : '' %>>2</option>
+                            <option value="3" <%= data.bedroom==='3' ? 'selected' : '' %>>3</option>
+                            <option value="4" <%= data.bedroom==='4' ? 'selected' : '' %>>4</option>
+                            <option value="5" <%= data.bedroom==='5' ? 'selected' : '' %>>5</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label for="">Numbers of bathroom</label>
+                        <select name="bathroom" id="" class="form-select">
+                            <option selected disabled>Select</option>
+                            <option value="1" <%= data.bathroom==='1' ? 'selected' : '' %>>1</option>
+                            <option value="2" <%= data.bathroom==='2' ? 'selected' : '' %>>2</option>
+                            <option value="3" <%= data.bathroom==='3' ? 'selected' : '' %>>3</option>
+                            <option value="4" <%= data.bathroom==='4' ? 'selected' : '' %>>4</option>
+                            <option value="5" <%= data.bathroom==='5' ? 'selected' : '' %>>5</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label for="">Numbers of garage</label>
+                        <select name="garage" id="" class="form-select">
+                            <option selected disabled>Select</option>
+                            <option value="1" <%= data.garage==='1' ? 'selected' : '' %>>1</option>
+                            <option value="2" <%= data.garage==='2' ? 'selected' : '' %>>2</option>
+                            <option value="3" <%= data.garage==='3' ? 'selected' : '' %>>3</option>
+                            <option value="4" <%= data.garage==='4' ? 'selected' : '' %>>4</option>
+                            <option value="5" <%= data.garage==='5' ? 'selected' : '' %>>5</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <div>
+                            <label for="">Amenities</label>
+                        </div>
+                        <div class="">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="balcony" name="amenities" <% for(let element of data.amenities){ %>
+                                  <%= element==='balcony' ? 'checked' : '' %>
+                               <% } %> >
+                                <label class="form-check-label" for="inlineCheckbox1">Balcony</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="cable tv" name="amenities" <% for(let element of data.amenities){ %>
+                                  <%= element==='cable tv' ? 'checked' : '' %>
+                               <% } %>>
+                                <label class="form-check-label" for="inlineCheckbox2">Cable Tv</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="deck" name="amenities" <% for(let element of data.amenities){ %>
+                                  <%= element==='deck' ? 'checked' : '' %>
+                               <% } %>>
+                                <label class="form-check-label" for="inlineCheckbox3">Deck</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="parking" name="amenities" <% for(let element of data.amenities){ %>
+                                  <%= element==='parking' ? 'checked' : '' %>
+                               <% } %>>
+                                <label class="form-check-label" for="inlineCheckbox3">Parking</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="tennis" name="amenities" <% for(let element of data.amenities){ %>
+                                  <%= element==='tennis' ? 'checked' : '' %>
+                               <% } %>>
+                                <label class="form-check-label" for="inlineCheckbox3">Tennis Courts</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="internet" name="amenities" <% for(let element of data.amenities){ %>
+                                  <%= element==='internet' ? 'checked' : '' %>
+                               <% } %>>
+                                <label class="form-check-label" for="inlineCheckbox3">Internet</label>
+                              </div>
+                          </div>
+                        </div>
+                      <div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </div>
+                    </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div><!-- .animated -->
+
+
+</div><!-- .content -->
+</div><!-- /#right-panel -->
+
+
+<%- include('../admin-footer') %>

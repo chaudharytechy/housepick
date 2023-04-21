@@ -1,0 +1,53 @@
+<%- include('../admin-sidebar.ejs') %>
+
+
+<%- include('../admin-header.ejs') %>
+
+
+
+
+<div class="content mt-3">
+  <div class="animated fadeIn">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header d-flex justify-content-between">
+                      <div>
+                        <strong class="card-title">Edit Slider</strong>
+                      </div>
+                  </div>
+                  <div class="card-body">
+                    <form action="/aboutupdate/<%= item._id %>" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="">Image</label>
+                            <input type="file" name="image" accept="image/*" class="form-control">
+                            <img src="<%= item.image.url %>" style="width: 150px; margin-top: 20px;" class="img-fluid" alt="">
+                          </div>
+                        <div class="mb-3">
+                          <label for="">Main Heading</label>
+                          <input type="text" name="main_heading" value="<%= item.main_heading %>" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                          <label for="">Description Heading</label>
+                          <input type="text" name="description_heading"  value="<%= item.description_heading %>"class="form-control">
+                        </div>
+                        <div class="mb-3">
+                          <label for="">Description</label>
+                          <textarea name="description" class="form-control" id="" cols="30" rows="7"><%= item.description %></textarea>
+                        </div>
+                        
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div><!-- .animated -->
+
+
+</div><!-- .content -->
+</div><!-- /#right-panel -->
+
+
+<%- include('../admin-footer') %>

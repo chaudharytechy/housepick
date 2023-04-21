@@ -1,0 +1,139 @@
+<%- include('../admin-sidebar.ejs') %>
+
+
+<%- include('../admin-header.ejs') %>
+
+
+
+
+<div class="content mt-3">
+  <div class="animated fadeIn">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header d-flex justify-content-between">
+                      <div>
+                        <strong class="card-title">Property details</strong>
+                      </div>
+                  </div>
+                  <div class="card-body">
+                      <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                          <thead>
+                          </thead>
+                          <tbody>
+                            <tr>
+                                <th>Front Image</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="<%= view.front_image.url %>" width="150px" alt="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>All Images</th>
+                            </tr>
+                            <tr class="d-flex flex-wrap">
+                                <% for(let element of view.all_image){ %>
+                                    <td>
+                                        <img src="<%= element.url %>" width="150px" alt="">
+                                    </td>
+                                <% } %>
+                                
+                            </tr>
+                            <tr>
+                                <th>Property Name</th>
+                            </tr>
+                            <tr>
+                                <td><%= view.property_name %></td>
+                            </tr>
+                            <tr>
+                                <th>State</th>
+                            </tr>
+                            <tr>
+                                <td><%= view.state %></td>
+                            </tr>
+                            <tr>
+                                <th>City</th>
+                            </tr>
+                            <tr>
+                                <td><%= view.city %></td>
+                            </tr>
+                            <tr>
+                                <th>Address</th>
+                            </tr>
+                            <tr>
+                                <td><%= view.address %></td>
+                            </tr>
+                            <tr>
+                                <th>Pincode</th>
+                            </tr>
+                            <tr>
+                                <td><%= view.pincode %></td>
+                            </tr>
+                            
+                            <tr>
+                                <th>Price</th>
+                            </tr>
+                            <tr>
+                                <td><%= view.price %></td>
+                            </tr>
+                            <tr>
+                                <th>Type</th>
+                            </tr>
+                            <tr>
+                                <td><%= view.type %></td>
+                            </tr>
+                            <tr>
+                                <th>Area</th>
+                            </tr>
+                            <tr>
+                                <td><%= view.area %></td>
+                            </tr>
+                            <tr>
+                                <th>Number of bedroom</th>
+                            </tr>
+                            <tr>
+                                <td><%= view.bedroom %></td>
+                            </tr>
+                            <tr>
+                                <th>Number of bathroom</th>
+                            </tr>
+                            <tr>
+                                <td><%= view.bathroom %></td>
+                            </tr>
+                            <tr>
+                                <th>Number of garage</th>
+                            </tr>
+                            <tr>
+                                <td><%= view.garage %></td>
+                            </tr>
+                            <tr>
+                                <th>Amenities</th>
+                            </tr>
+                            <tr>
+                                <td><%= view.amenities %></td>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                            </tr>
+                            <tr>
+                                <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, ab assumenda magni expedita modi optio ullam nesciunt, illum repellat officiis soluta deserunt iusto delectus voluptatibus. Laborum eum hic quasi beatae! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, cum? Laborum harum nihil voluptatum, eum quis iste illum, quam itaque veniam cumque quod! Illo ab placeat tenetur eos nisi consequatur!</td>
+                            </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div><!-- .animated -->
+
+
+</div><!-- .content -->
+</div><!-- /#right-panel -->
+
+
+      
+
+<%- include('../admin-footer') %>
+
+
