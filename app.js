@@ -28,6 +28,8 @@ app.use(express.urlencoded({extended:false}));
 
 app.use(fileUpload({useTempFiles : true}));
 
+const cookieParser=require('cookie-parser')
+app.use(cookieParser())
 
 //for flash message
 app.use(session({

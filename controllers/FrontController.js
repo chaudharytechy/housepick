@@ -107,7 +107,7 @@ class FrontController {
 
   static login = (req, res) => {
     try {
-      res.render("login", { message: req.flash("success") });
+      res.render("login", { message: req.flash("success"),message: req.flash("error")  });
     } catch (error) {
       console.log(error);
     }
@@ -126,7 +126,7 @@ class FrontController {
     const location = req.body.location
     // console.log(location.length);
     if(location.length > 0){
-      const data = await PropertyModel.find({"city":{$regex:location}})
+      const data = await PropertyModel.find({"city":{$regex:location,$options:'i'}})
       // console.log(data.length);
       res.render("searched_property",{data:data, location:location})
     }else{

@@ -2,7 +2,7 @@ const UserModel = require("../../models/user");
 const otpGenerator = require("otp-generator");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
-
+const jwt = require('jsonwebtoken');
 
 class UserController {
 
@@ -115,12 +115,59 @@ console.log("email sent")
     }else{
       console.log("otp is expired")
     }
-
-
     
+  }
+
+  static verify_login=async(req,res)=>{
+   try {
+     const{email,password}=req.body
+    
+       if(email && password){
+        const data=await UserModel.findOne({email:email})
+        // console.log(data)
+        if(data!=null){
+          const is_match=await bcrypt.compare(password,data.password)
+            if((data.email==email)&& is_match){
+              if(data.role=='admin'){
+                // token genrate
+                const token = jwt.sign({ user_id: data._id }, 'Amitchaudharyid')
+              //   console.log(token)
+                res.cookie('token', token)
+                res.redirect('/admin/dashboard')
+             }else{
+              const token = jwt.sign({ user_id: data._id }, 'Amitchaudharyid')
+              // console.log(token)
+              res.cookie('token', token)
+              req.flash('msg','login Successfull')
+              res.redirect('/')
+             }
+
+          }else{
+            req.flash("error", "please check your email and password")
+            res.redirect('/login')
+          }
+        }else{
+          req.flash("error", "please check your email and password")
+          res.redirect('/login')
+        }
+       }
+   } catch (error) {
+    console.log(error)
+   }
   }
 
 
 
+  static logout=async(req,res)=>{
+       // console.log("log")
+   try {
+    res.clearCookie('token')
+
+  res.redirect('/login')
+} catch (error) {
+  console.log(error)
 }
+}
+  }
+
 module.exports = UserController;

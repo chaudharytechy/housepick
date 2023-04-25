@@ -8,6 +8,7 @@ const SliderController = require('../controllers/admin/SliderController')
 const TeamController = require('../controllers/admin/TeamController')
 const FrontController = require('../controllers/FrontController')
 const UserController = require('../controllers/user/UserController')
+const auth_user=require('../middleware/auth')
 const router = express.Router()
 
 
@@ -29,7 +30,7 @@ router.post('/filterProperty',FrontController.filterProperty)
 
 
 //admin controller
-router.get('/admin/dashboard',AdminController.dashboard)
+router.get('/admin/dashboard',auth_user,AdminController.dashboard)
 
 
 
@@ -58,6 +59,7 @@ router.get('/singleimagedelete/:id/front-image/:public_id',PropertyController.si
 router.get('/admin/dashboard/about',AboutController.aboutDisplay)
 router.get('/admin/dashboard/aboutedit/:id',AboutController.aboutEdit)
 router.post('/aboutupdate/:id',AboutController.aboutUpdate)
+router.post('/aboutinsert',AboutController.aboutInsert)
 
 
 //blog controller
@@ -89,7 +91,8 @@ router.post('/userregister',UserController.userRegister)
 router.get('/verify/:id',UserController.verify)
 router.post('/verifyotp/:id',UserController.verifyOtp)
 router.get('/sendemail',UserController.sendEmail)
-
+router.post('/verify_login',UserController.verify_login)
+router.get('/logout',UserController.logout)
 
 
 module.exports = router

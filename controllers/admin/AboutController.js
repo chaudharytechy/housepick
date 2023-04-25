@@ -10,10 +10,53 @@ class AboutController {
         message: req.flash("success"),
         message1: req.flash("error"),
       });
+      // console.log(data)
     } catch (error) {
       console.log(error);
     }
   };
+
+  static aboutInsert = async (req, res) => {
+    try {
+      const { main_heading, description,description_heading } = req.body;
+
+      if (main_heading && description && description_heading && req.files) {
+        const image = req.files.image;
+
+        const imageresult = await cloudinary.uploader.upload(
+          image.tempFilePath,
+          {
+            folder: "housepick/blogImages",
+          }
+        );
+
+        const insert = new AboutModel({
+          image: {
+            public_id: imageresult.public_id,
+            url: imageresult.secure_url,
+          },
+          main_heading:main_heading,
+          description_heading: description_heading,
+          description: description,
+
+        });
+        await insert.save();
+        req.flash("success", "about added successfully.");
+        res.redirect("/admin/dashboard/about");
+      } else {
+        req.flash("error", "All fields are required.");
+        res.redirect("/admin/dashboard/about");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+
+
+
+
 
   static aboutEdit = async (req, res) => {
     try {

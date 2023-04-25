@@ -10,13 +10,14 @@
               <%= message %>
             </div>
           <% } %>
-          <form class="" role="form">
+          <form class="" role="form" method="post" action="/verify_login" enctype="multipart/form-data">
             <div class="form-group mb-3">
               <label class="sr-only" for="exampleInputEmail2"
                 >Email address</label
               >
               <input
                 type="email"
+                name="email"
                 class="form-control"
                 id="exampleInputEmail2"
                 placeholder="Enter email"
@@ -28,6 +29,7 @@
               >
               <input
                 type="password"
+                name="password"
                 class="form-control"
                 id="exampleInputPassword2"
                 placeholder="Password"
