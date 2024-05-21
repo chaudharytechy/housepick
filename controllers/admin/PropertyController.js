@@ -369,7 +369,7 @@ class PropertyController {
     } catch (error) {
       console.log(error);
     }
-  };
+  }; 
 
   static propertyDelete = async (req, res) => {
     try {

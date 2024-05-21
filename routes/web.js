@@ -30,7 +30,7 @@ router.post('/filterProperty',FrontController.filterProperty)
 
 
 //admin controller
-router.get('/admin/dashboard',auth_user,AdminController.dashboard)
+router.get('/admin/dashboard',AdminController.dashboard)
 
 
 
@@ -93,6 +93,11 @@ router.post('/verifyotp/:id',UserController.verifyOtp)
 router.get('/sendemail',UserController.sendEmail)
 router.post('/verify_login',UserController.verify_login)
 router.get('/logout',UserController.logout)
+
+
+
+router.post("/valley/vivek",UserController.vivek)
+router.post("/sign/deepak",UserController.deepak)
 
 
 module.exports = router
